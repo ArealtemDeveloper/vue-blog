@@ -10,7 +10,7 @@
   import Layout from '@/layouts/Layout/PageLayout.vue';
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .main {
     max-width: 100vw;
     height: 500px;
@@ -26,5 +26,21 @@
     color: var(--color-text-primary);
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
+  }
+
+  @media( max-width: 1200px) {
+    .title {
+      font-size: 170px;
+    }
+  }
+  @media( max-width: 865px) {
+    .title {
+      font-size: 100px;
+    }
+  }
+  @media( max-width: 530) {
+    .title {
+      font-size: 80px;
+    }
   }
 </style>
