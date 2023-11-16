@@ -1,5 +1,5 @@
 <template>
-<v-app-bar style="background-color: var(--color-background-primary);">
+<v-app-bar elevation="1" style="background-color: var(--color-background-primary);">
     <v-app-bar-nav-icon @click="navOpen = !navOpen" class="menu"/>
       <v-app-bar-title class="d-none d-lg-block">
         <h3 class="header_title">ArealtemBlog</h3>
@@ -22,6 +22,7 @@
         floating
         permanent
         width="300"
+        class="menuList"
       >
         <v-list
           density="compact"
@@ -32,7 +33,7 @@
           <v-list-item prepend-icon="mdi-post" title="Blog" value="about"></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-main style="height: 200px" ></v-main>
+      <v-main style="height: 150px" ></v-main>
     </v-layout>
   </v-card>
 </template>
@@ -41,15 +42,7 @@
   import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher.vue'
   import { ref } from 'vue';
 
-  const navOpen = ref(false)
+  const navOpen = ref<boolean>(false)
 </script>
 
-<style  scoped>
-  .header_title {
-    color: var(--color-text-primary);
-    font-size: 24px;
-  }
-  .menu {
-    color: var(--color-text-primary) ;
-  }
-</style>
+<style scoped lang="scss" src="./PageHeader.style.scss"></style>

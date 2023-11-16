@@ -1,15 +1,16 @@
 <template>
-    <Header/>
+  <Layout>
     <v-main class="main">
          <h1 class="title">THE BLOG</h1> 
     </v-main>
+  </Layout>
 </template>
 
 <script lang="ts" setup>
-  import Header from '@/components/Header/Header.vue';
+  import Layout from '@/layouts/LayoutPage.vue';
 </script>
 
-<style>
+<style scoped>
   .main {
     max-width: 100vw;
     height: 500px;
