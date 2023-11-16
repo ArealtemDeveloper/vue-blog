@@ -1,0 +1,15 @@
+[data-theme="light"] {
+    --color-background-primary: #fff;
+    --color-background-secondary: #121219;
+    --color-accent: #2195f3;
+    --color-border: rgba(0, 0, 0, 0.34);
+    --color-text-primary: #212121;
+}
+
+[data-theme="dark"] {
+    --color-background-primary: #090D1F;;
+    --color-background-secondary: #f5f5f5; 
+    --color-accent: #2195f3;
+    --color-border: #fff;
+    --color-text-primary: #fff;
+}
