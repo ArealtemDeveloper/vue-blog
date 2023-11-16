@@ -1,13 +1,13 @@
 <template>
   <Layout>
-    <v-main class="main">
+    <div class="main">
          <h1 class="title">THE BLOG</h1> 
-    </v-main>
+    </div>
   </Layout>
 </template>
 
 <script lang="ts" setup>
-  import Layout from '@/layouts/LayoutPage.vue';
+  import Layout from '@/layouts/Layout/PageLayout.vue';
 </script>
 
 <style scoped>
@@ -17,11 +17,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 243.8px;
     background-color: var(--color-background-primary);
   }
   .title {
     font-size: 243.8px;
+    text-align: center;
     padding: 20px;
     color: var(--color-text-primary);
     border-top: 1px solid var(--color-border);

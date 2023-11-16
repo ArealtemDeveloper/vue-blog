@@ -1,13 +1,13 @@
 <template>
     <Layout>
-      <v-main style="">
+      <div style="">
           <h1>About</h1> 
-      </v-main>
+      </div>
     </Layout>
 </template>
 
 <script setup lang="ts">
-  import Layout from '@/layouts/LayoutPage.vue';
+  import Layout from '@/layouts/Layout/PageLayout.vue';
 </script>
 
 <style scoped>
