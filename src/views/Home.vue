@@ -1,23 +1,28 @@
 <template>
   <Layout>
-    <div class="main">
+    <main class="main">
          <h1 class="title">THE BLOG</h1> 
-    </div>
+         <PostsList/>
+    </main>
   </Layout>
 </template>
 
 <script lang="ts" setup>
   import Layout from '@/layouts/Layout/PageLayout.vue';
+  import PostsList from '@/components/PostsList/PostsList.vue';
 </script>
 
 <style lang="scss" scoped>
   .main {
     max-width: 100vw;
-    height: 500px;
+    height: 100%;
     display: flex;
+    gap: 20px;
     align-items: center;
     justify-content: center;
     background-color: var(--color-background-primary);
+    flex-direction: column;
+    margin-top: 20px;
   }
   .title {
     font-size: 243.8px;
