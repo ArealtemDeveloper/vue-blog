@@ -1,0 +1,23 @@
+.wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--color-background-secondary);
+    color: var(--color-background-primary);
+    width: 700px;
+    height: 600px;
+}
+
+.input-wrapper {
+    width: 200px;
+    height: 10px;
+    background-color: var(--background-color-secondary);
+}

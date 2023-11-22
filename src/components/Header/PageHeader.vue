@@ -14,6 +14,10 @@
       hide-details 
       flat/>
       <v-spacer></v-spacer>
+      <LoginBtn 
+      :name="'Login'"
+      :url="'/login'"
+      />
       <ThemeSwitcher/>
   </v-app-bar>
   <v-card style="position: absolute;" v-show="navOpen" class="mt-2 ml-2" width="300" elevation="5">
@@ -39,6 +43,7 @@
 </template>
 
 <script setup lang="ts">
+  import LoginBtn from '@/components/LoginBtn/LoginBtn.vue'
   import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher.vue'
   import { ref } from 'vue';
 

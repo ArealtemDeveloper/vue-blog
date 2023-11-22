@@ -8,7 +8,6 @@
 
 <script setup lang="ts">
     const props = defineProps(['title', 'text', 'img'])
-    console.log(props.img)
 </script>
 
 <style lang="scss" src="./PostCard.style.scss" scoped></style>
