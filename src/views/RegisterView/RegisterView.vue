@@ -1,24 +1,19 @@
 <template>
-<div class="wrapper">
         <RouterLink to="/"><img class='home' src="../../assets/images/home.svg" alt=""></RouterLink>
         <AuthForm 
         :inputs="data" 
-        title="WELCOME" 
-        btnName='Login' 
-        text="Don't have an account?"
-        refTo='register'
-        refName='Sign Up'
+        title="SIGN UP" 
+        btnName='Sign Up' 
+        text="Have an account?"
+        refTo='login'
+        refName='Login'
         />
-</div>
 </template>
 
 <script setup lang="ts">
 import AuthForm from '@/components/Form/AuthForm.vue';
 import { data } from './data'
-import Layout from '@/layouts/Layout/PageLayout.vue';
-
-
 
 </script>
 
-<style scoped lang="scss" src="./LoginView.style.scss"></style>
+<style scoped lang="scss" src="./RegisterView.style.scss"></style>

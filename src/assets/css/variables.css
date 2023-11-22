@@ -4,7 +4,7 @@
     --color-accent: #2195f3;
     --color-border: rgba(0, 0, 0, 0.34);
     --color-text-primary: #212121;
-    --color-purple: #6941C6;
+    --color-purple: #3949AB;
 }
 
 [data-theme="dark"] {
@@ -13,5 +13,5 @@
     --color-accent: #2195f3;
     --color-border: #fff;
     --color-text-primary: #fff;
-    --color-purple: #6941C6;
+    --color-purple: #3949AB;
 }

@@ -1,8 +1,14 @@
 .wrapper {
     height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column-reverse;
+    gap: 10px;
+    padding: 50px;
+    position: relative;
+    background-color: var(--color-purple);
 }
 
 .form {
@@ -10,14 +16,53 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: var(--color-background-secondary);
+    gap: 24px;
     color: var(--color-background-primary);
-    width: 700px;
-    height: 600px;
+
+    h1{
+        color: #fff;
+        margin-bottom: 20px;
+    }
 }
 
-.input-wrapper {
-    width: 200px;
-    height: 10px;
+.input_wrapper { 
     background-color: var(--background-color-secondary);
+    display: flex;
+    width: 358px;
+    height: 40px;
+    padding: 8px 282px 8px 8px;
+    align-items: center;
+    border-radius: 8px;
+    gap: 15px;
+    border: 1px solid  #D0D0D0;
+    input {  
+        outline: none;
+        color: #fff;
+    }
+
+    ::placeholder {
+        color: #fff;
+    }
+    
+}
+
+
+.img_container{
+
+    img {
+        width: 150px;
+    }
+}
+
+.btn {
+    margin-top: 20px;
+    background-color: var(--color-background-primary);
+    padding: 8px 96px;
+    align-self: stretch;
+    border-radius: 40px;
+    color: var(--color-background-secondary);
+}
+
+.link {
+    color: #fff;
 }

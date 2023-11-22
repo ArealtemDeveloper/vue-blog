@@ -9,19 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { ref } from 'vue';
+    import { inject } from 'vue'
 
-
-let theme = ref<string>('light')
-    onMounted( () => {
-        const savedTheme = localStorage.getItem('theme')
-        if(savedTheme) {
-            theme.value = savedTheme
-            document.body.setAttribute('data-theme', savedTheme)
-        }
-    })
-
+    const theme = inject('theme')
     const toggleTheme = () => {
         theme.value = theme.value === 'light' ? 'dark' : 'light'
         document.body.setAttribute('data-theme', theme.value)
