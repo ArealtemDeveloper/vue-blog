@@ -25,6 +25,14 @@
     }
 }
 
+.form_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .input_wrapper { 
     background-color: var(--background-color-secondary);
     display: flex;
