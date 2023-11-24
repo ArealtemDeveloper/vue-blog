@@ -9,9 +9,7 @@
 </template>
 
 <script setup lang="ts">
-    import { Ref } from 'vue';
     import { inject } from 'vue'
-
 
     const theme:any = inject('theme')
     const toggleTheme = () => {
@@ -19,6 +17,7 @@
         document.body.setAttribute('data-theme', theme.value)
         localStorage.setItem('theme', theme.value)
     }
+
 </script>
 
 <style lang="scss">

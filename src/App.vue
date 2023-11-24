@@ -17,8 +17,12 @@ provide('theme', theme)
         if(savedTheme) {
             theme.value = savedTheme
             document.body.setAttribute('data-theme', savedTheme)
+        }else {
+          localStorage.setItem('theme', 'light')
+          document.body.setAttribute('data-theme', 'light')
         }
     })
+
 </script>
 
 <style >
