@@ -9,9 +9,11 @@
 </template>
 
 <script setup lang="ts">
+    import { Ref } from 'vue';
     import { inject } from 'vue'
 
-    const theme = inject('theme')
+
+    const theme:any = inject('theme')
     const toggleTheme = () => {
         theme.value = theme.value === 'light' ? 'dark' : 'light'
         document.body.setAttribute('data-theme', theme.value)

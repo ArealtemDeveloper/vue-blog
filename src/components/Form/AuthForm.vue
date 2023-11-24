@@ -30,7 +30,7 @@
                     <input v-model="confirmPassword" type="password" name="password" placeholder="Confirm password">
                 </div>
             </div>
-            <button @click="onSubmit" class="btn">{{btnName}}</button>
+            <button @click="(e) => onSubmit(e, login)" class="btn">{{btnName}}</button>
             <p class="error">{{ errorMsg.value }}</p>
             <p>{{ text }} <span><RouterLink class="link" :to="refTo">{{refName}}</RouterLink></span></p>
         </form>
@@ -63,7 +63,7 @@
         }
     }
     let user = {}
-    const onSubmit = (e, login) => {
+    const onSubmit = (e:MouseEvent, login:boolean) => {
         e.preventDefault();
         login ? null: checkPassword()
         user = {
@@ -72,6 +72,7 @@
             username: username.value,
         }
         props.fetchUser(user)
+        console.log(user)
     }
 </script>
 
