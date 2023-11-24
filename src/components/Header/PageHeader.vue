@@ -14,6 +14,19 @@
       hide-details 
       flat/>
       <v-spacer></v-spacer>
+      <div>
+        
+      </div>
+      <LoginBtn v-if="user"
+      :name="'Logout'"
+      :url="'/'"
+      :logout="logout"
+      />
+      <LoginBtn v-else
+      :name="'Login'"
+      :url="'/login'"
+      />
+      <p class="username">{{ user ? user.username : null}}</p>
       <ThemeSwitcher/>
   </v-app-bar>
   <v-card style="position: absolute;" v-show="navOpen" class="mt-2 ml-2" width="300" elevation="5">
@@ -39,10 +52,19 @@
 </template>
 
 <script setup lang="ts">
+  import LoginBtn from '@/components/LoginBtn/LoginBtn.vue'
   import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher.vue'
   import { ref } from 'vue';
+  import axios from 'axios'
 
   const navOpen = ref<boolean>(false)
+  const user = ref(JSON.parse(localStorage.getItem('user')))
+  const logout = async () => {
+    await axios.post('https://blog-backend-rosy.vercel.app/api/auth/logout')
+    localStorage.removeItem('user')
+    window.location.reload()
+  }
+
 </script>
 
 <style scoped lang="scss" src="./PageHeader.style.scss"></style>

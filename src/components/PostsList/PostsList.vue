@@ -1,10 +1,9 @@
 <template>
     <div class="container">
-        <div v-for="card in BlogList">
+        <div v-for="card in data" key="card.id">
             <PostCard 
-            :key="card.id" 
             :title="card.title" 
-            :text="card.text" 
+            :text="card.desc" 
             :img="card.img"
             />
         </div>
@@ -12,8 +11,11 @@
 </template>
 
 <script setup lang="ts">
-    import { BlogList } from './data'
     import PostCard from '@/components/Card/PostCard.vue'
+    import axios from 'axios';
+
+    const props = defineProps(["data"])
+
 </script>
 
 <style scoped lang="scss" src="./PostsList.style.scss"></style>

@@ -8,6 +8,17 @@
 
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
+import { provide, onMounted, ref} from 'vue';
+
+let theme = ref<string>('light')
+provide('theme', theme)
+    onMounted( () => {
+        const savedTheme = localStorage.getItem('theme')
+        if(savedTheme) {
+            theme.value = savedTheme
+            document.body.setAttribute('data-theme', savedTheme)
+        }
+    })
 </script>
 
 <style >
