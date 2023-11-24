@@ -10,13 +10,12 @@
 </template>
 
 <script setup lang="ts">
-import type { IBreadcrumb } from 'router';
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
 
-const breadcrumbs = ref<IBreadcrumb>();
+const breadcrumbs = ref();
 
 breadcrumbs.value = route.meta.breadcrumb(route);
 
