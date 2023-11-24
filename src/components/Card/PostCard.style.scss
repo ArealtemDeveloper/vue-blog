@@ -32,3 +32,17 @@
     background-color: var(--color-purple);
     padding: 5px 10px;
 }
+
+
+@media(max-width: 500px) {
+    .img {
+        width: 280px;
+        object-fit: cover;
+    }
+    .card {
+        width: 300px;
+        align-items: center;
+    }
+    
+}
+

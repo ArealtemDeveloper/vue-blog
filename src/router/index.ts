@@ -2,6 +2,7 @@
 import AboutVue from '@/views/AboutView/AboutView.vue'
 import HomeVue from '@/views/HomeView/HomeView.vue'
 import LoginVue from '@/views/LoginView/LoginView.vue'
+import PostVue from '@/views/PostView/PostView.vue'
 import RegisterVue from '@/views/RegisterView/RegisterView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -12,5 +13,6 @@ export default createRouter({
     {path: '/about', component: AboutVue},
     {path: '/login', component: LoginVue},
     {path: '/register', component: RegisterVue},
+    {path: '/posts/:id', component: PostVue},
   ]
 })
