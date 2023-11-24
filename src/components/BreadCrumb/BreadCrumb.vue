@@ -2,7 +2,7 @@
   <div class="breadcrumbs-wrapper">
     <div :key="index" v-for="(breadcrumb, index) in breadcrumbs" class="breadcrumbs">
       <RouterLink v-if="breadcrumb.link" :to="breadcrumb.link">{{
-        breadcrumb.title + '/'
+        breadcrumb.title + ` >>`
       }}</RouterLink>
       <p v-else>{{ breadcrumb.title }}</p>
     </div>

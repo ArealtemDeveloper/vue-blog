@@ -32,6 +32,10 @@ export default createRouter({
         title: 'About',
         breadcrumb: () => [
           {
+            title: 'Home',
+            link: Links.HOME
+          },
+          {
             title: 'About',
           }
         ]
@@ -50,7 +54,7 @@ export default createRouter({
             link: Links.HOME
           },
           {
-            title: route.params.id as string
+            title: `Post ${route.params.id}` as string
           }
         ]
       }

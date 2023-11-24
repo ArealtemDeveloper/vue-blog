@@ -11,7 +11,7 @@
                         <div v-if="data.userImg" class="avatar">
                             <img :src="data.userImg" alt="img">
                         </div>
-                        <div v-else class="avatar">
+                        <div v-else class="avatar avatar_placeholder">
                             <img src="../../assets/images/user.svg" alt="">
                         </div>
                         <span>{{data.username}}</span>
