@@ -24,9 +24,12 @@ const data = ref([])
 const postId = +route.params.id
 
 onMounted(async() => {
-    const res = await axios.get(`https://blog-backend-rosy.vercel.app/api/posts/${postId}`)
-    data.value = res.data
-    console.log(data.value.date)
+    try {
+        const res = await axios.get(`https://blog-backend-rosy.vercel.app/api/posts/${postId}`)
+        data.value = res.data
+    } catch (error) {
+        console.log(error)
+    }
 })
 </script>
 
