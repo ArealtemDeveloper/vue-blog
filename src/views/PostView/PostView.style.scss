@@ -26,6 +26,28 @@
     .date {
         color: var(--color-purple);
         font-weight: 700;
+        margin-bottom: 10px;
+    }
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    span {
+        color: var(--color-text-primary);
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: 2px solid var(--color-purple);
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
