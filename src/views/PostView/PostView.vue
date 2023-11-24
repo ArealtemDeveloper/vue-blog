@@ -1,6 +1,6 @@
 <template>
     <Layout>
-        <div class="container">
+        <div class="container" v-if="data">
                 <div class="img_container">
                     <img :src="data.img" class="img" alt="">
                 </div>
@@ -9,6 +9,9 @@
                     <h1>{{ data.title }}</h1>
                     <p>{{ data.desc }}</p>
                 </div>
+        </div>
+        <div v-else>
+            <p>This post doesn't exist</p>
         </div>
     </Layout>
 </template>
