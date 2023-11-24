@@ -16,7 +16,7 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute();
 
-const breadcrumbs = ref<IBreadcrumb[]>(['Home']);
+const breadcrumbs = ref<IBreadcrumb[]>([]);
 console.log(breadcrumbs)
 
 breadcrumbs.value = route.meta.breadcrumb(route);
