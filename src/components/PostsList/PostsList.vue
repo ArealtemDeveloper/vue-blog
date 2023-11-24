@@ -1,10 +1,11 @@
 <template>
     <div class="container">
-        <div v-for="card in data" key="card.id">
+        <div v-for="card in data" :key="card.id">
             <PostCard 
             :title="card.title" 
             :text="card.desc" 
             :img="card.img"
+            :id="card.id"
             />
         </div>
     </div>
