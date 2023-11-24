@@ -4,29 +4,29 @@
         <h1>{{ title }}</h1>
             <div v-if="login" class='form_wrapper'>
                 <div class='input_wrapper'>
-                    <img src='src/assets/images/user.svg' alt="img">
+                    <img src='../../assets/images/user.svg' alt="img">
                     <input v-model="username" type="text" name="username" placeholder="username">
                 </div>
                 <div class='input_wrapper'>
-                    <img src='src/assets/images/password.svg' alt="password">
+                    <img src='../../assets/images/password.svg' alt="password">
                     <input v-model="password" type="password" name="password" placeholder="Password">
                 </div>
             </div>
             <div v-else class='form_wrapper'>
                 <div class='input_wrapper'>
-                <img src='src/assets/images/mail.svg' alt="mail">
+                <img src='../../assets/images/mail.svg' alt="mail">
                     <input v-model="email" type="email" name="email" placeholder="E-mail">
                 </div>
                 <div class='input_wrapper'>
-                    <img src='src/assets/images/user.svg' alt="user">
+                    <img src='../../assets/images/user.svg' alt="user">
                     <input v-model="username" type="text" name="Username" placeholder="Username">
                 </div>
                 <div class='input_wrapper'>
-                    <img src='src/assets/images/password.svg' alt="password">
+                    <img src='../../assets/images/password.svg' alt="password">
                     <input v-model="password" type="password" name="password" placeholder="Password">
                 </div>
                 <div class='input_wrapper'>
-                    <img src='src/assets/images/password.svg' alt="password">
+                    <img src='../../assets/images/password.svg' alt="password">
                     <input v-model="confirmPassword" type="password" name="password" placeholder="Confirm password">
                 </div>
             </div>
