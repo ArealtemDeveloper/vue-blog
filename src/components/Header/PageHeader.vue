@@ -26,7 +26,7 @@
       :name="'Login'"
       :url="'/login'"
       />
-      <p class="username">{{ user ? user.username : null}}</p>
+      <p class="username">{{ user ? JSON.parse(user).username : null}}</p>
       <ThemeSwitcher/>
   </v-app-bar>
   <v-card style="position: absolute;" v-show="navOpen" class="mt-2 ml-2" width="300" elevation="5">
@@ -58,7 +58,7 @@
   import axios from 'axios'
 
   const navOpen = ref<boolean>(false)
-  const user = ref(JSON.parse(localStorage.getItem('user')))
+  const user = ref(localStorage.getItem('user'))
   const logout = async () => {
     await axios.post('https://blog-backend-rosy.vercel.app/api/auth/logout')
     localStorage.removeItem('user')

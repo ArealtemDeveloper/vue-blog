@@ -19,10 +19,11 @@ import AuthForm from '@/components/Form/AuthForm.vue';
 import { ref } from 'vue'
 import axios from 'axios';
 import router from '@/router';
+import { IUser } from './LoginView.types';
 
 let errorMsg = ref('')
 const login = ref(true)
-const fetchUser = async (user) => {
+const fetchUser = async (user:IUser) => {
         try {
                 const res = await axios.post('https://blog-backend-rosy.vercel.app/api/auth/login', user)
                 localStorage.setItem('user', JSON.stringify(res.data))
