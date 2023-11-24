@@ -8,6 +8,8 @@
         refTo='register'
         refName='Sign Up'
         :login='login'
+        :fetchUser="fetchUser"
+        :errorMsg="errorMsg"
         />
 </div>
 </template>
@@ -15,8 +17,21 @@
 <script setup lang="ts">
 import AuthForm from '@/components/Form/AuthForm.vue';
 import { ref } from 'vue'
+import axios from 'axios';
+import router from '@/router';
 
+let errorMsg = ref('')
 const login = ref(true)
+const fetchUser = async (user) => {
+        try {
+                const res = await axios.post('https://blog-backend-rosy.vercel.app/api/auth/login', user)
+                localStorage.setItem('user', JSON.stringify(res.data))
+                router.push('/')
+        } catch (error) {
+                errorMsg.value = error.response.data
+                console.log(errorMsg.value)
+        }
+}
 
 </script>
 

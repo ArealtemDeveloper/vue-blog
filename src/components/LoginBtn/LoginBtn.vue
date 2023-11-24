@@ -1,6 +1,6 @@
 <template> 
 <div class="container">
-    <RouterLink :to="url" class="link">
+    <RouterLink :to="url" class="link" @click="logout">
         {{ name }}
     </RouterLink>
 </div>

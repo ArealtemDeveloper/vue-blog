@@ -4,8 +4,8 @@
         <h1>{{ title }}</h1>
             <div v-if="login" class='form_wrapper'>
                 <div class='input_wrapper'>
-                    <img src='src/assets/images/mail.svg' alt="img">
-                    <input v-model="email" type="email" name="email" placeholder="E-mail">
+                    <img src='src/assets/images/user.svg' alt="img">
+                    <input v-model="username" type="text" name="username" placeholder="username">
                 </div>
                 <div class='input_wrapper'>
                     <img src='src/assets/images/password.svg' alt="password">
@@ -31,6 +31,7 @@
                 </div>
             </div>
             <button @click="onSubmit" class="btn">{{btnName}}</button>
+            <p class="error">{{ errorMsg.value }}</p>
             <p>{{ text }} <span><RouterLink class="link" :to="refTo">{{refName}}</RouterLink></span></p>
         </form>
         <div class="img_container">
@@ -47,7 +48,9 @@
         'refTo', 
         'text', 
         'refName', 
-        'login'
+        'login',
+        'fetchUser',
+        'errorMsg'
     ])
     const email = ref('')
     const password = ref('')
@@ -56,10 +59,9 @@
 
     const checkPassword = () => {
         if(password.value && confirmPassword.value) {
-            password.value === confirmPassword.value ? console.log('OK') : console.log('Passwords do not match')
+            password.value === confirmPassword.value ? null : props.errorMsg.value = 'Passwords do not match'
         }
     }
-
     let user = {}
     const onSubmit = (e, login) => {
         e.preventDefault();
@@ -69,7 +71,7 @@
             password: password.value,
             username: username.value,
         }
-        console.log(user)
+        props.fetchUser(user)
     }
 </script>
 
