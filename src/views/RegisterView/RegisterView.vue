@@ -17,7 +17,10 @@ import AuthForm from '@/components/Form/AuthForm.vue';
 import { IUser } from './RegisterView.types'
 import { ref } from 'vue'
 import axios from 'axios';
-import router from '@/router';
+// import router from '@/router';
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
 
 const login = ref<boolean>(false)
 let errorMsg = ref('')

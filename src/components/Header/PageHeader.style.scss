@@ -15,3 +15,10 @@
     font-size: 20px;
     font-weight: 700;
   }
+
+  .popUp {
+    position: absolute;
+    z-index: 2;
+    top: 100px;
+    left: 0px;
+  }
