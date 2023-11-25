@@ -1,4 +1,5 @@
 <template>
+    <h1 class="title">Other Blog Posts</h1>
     <div class="container">
         <div v-for="card in data" :key="card.id">
             <PostCard 

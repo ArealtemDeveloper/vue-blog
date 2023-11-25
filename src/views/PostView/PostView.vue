@@ -43,6 +43,10 @@ onMounted(async() => {
         const res = await axios.get(`https://blog-backend-rosy.vercel.app/api/posts/${postId}`)
         data.value = res.data
         loading.value = false
+        window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+        });
     } catch (error) {
         console.log(error)
     }

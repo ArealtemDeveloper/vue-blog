@@ -19,7 +19,6 @@
     import router from '@/router';
     const props = defineProps(['title', 'text', 'img', 'id', 'date', 'category'])
     const categoryArr = props.category.split(' ')
-    console.log(categoryArr)
 
     const redirectToPost = () => {
         router.push(`/posts/${props.id}`)
