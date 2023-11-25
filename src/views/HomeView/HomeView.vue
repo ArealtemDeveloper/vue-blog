@@ -2,6 +2,7 @@
   <Layout>
     <main class="main">
          <h1 class="title">THE BLOG</h1> 
+         <LatestPosts :data="latestPosts"/>
          <PostsList :data="data"/>
     </main>
   </Layout>
@@ -10,13 +11,16 @@
 <script lang="ts" setup>
   import Layout from '@/layouts/Layout/PageLayout.vue';
   import PostsList from '@/components/PostsList/PostsList.vue';
+  import LatestPosts from '@/components/LatestPosts/LatestPosts.vue';
   import { onMounted } from 'vue';
   import axios from 'axios';
   import { ref } from 'vue';
 
   const data = ref([])
+  const latestPosts = ref([])
   onMounted(async() => {
     const res = await axios.get('https://blog-backend-rosy.vercel.app/api/posts')
+    latestPosts.value = res.data.slice(-3)
     data.value = res.data
   })
 </script>
