@@ -12,13 +12,12 @@
   import PostsList from '@/components/PostsList/PostsList.vue';
   import { onMounted } from 'vue';
   import axios from 'axios';
-import { ref } from 'vue';
+  import { ref } from 'vue';
 
   const data = ref([])
   onMounted(async() => {
     const res = await axios.get('https://blog-backend-rosy.vercel.app/api/posts')
     data.value = res.data
-    console.log(data.value)
   })
 </script>
 

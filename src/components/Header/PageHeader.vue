@@ -29,7 +29,7 @@
       <p class="username">{{ user ? JSON.parse(user).username : null}}</p>
       <ThemeSwitcher/>
   </v-app-bar>
-  <v-card style="position: absolute;" v-show="navOpen" class="mt-2 ml-2" width="300" elevation="5">
+  <v-card  v-show="navOpen" class="mt-2 ml-2 popUp" width="300" elevation="5">
     <v-layout> 
       <v-navigation-drawer
         floating

@@ -6,6 +6,8 @@
             :text="card.desc" 
             :img="card.img"
             :id="card.id"
+            :date="card.date"
+            :category="card.cat"
             />
         </div>
     </div>
@@ -13,8 +15,6 @@
 
 <script setup lang="ts">
     import PostCard from '@/components/Card/PostCard.vue'
-    import axios from 'axios';
-
     const props = defineProps(["data"])
 
 </script>

@@ -27,10 +27,28 @@
     height: 240px;
 }
 
-.btn {
-    color: #fff;
-    background-color: var(--color-purple);
-    padding: 5px 10px;
+.title_block {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.date {
+    color: var(--color-purple);
+    font-weight: 700;
+}
+
+.categories {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+
+    .category {
+        background-color: var(--color-background-secondary);
+        color: var(--color-background-primary);
+        padding: 5px 10px;
+        border-radius: 10px;
+    }
 }
 
 
