@@ -70,7 +70,7 @@
     })
 
     let user = {}
-    const onSubmit = (login:boolean) => {
+    const onSubmit = () => {
         if( !login ) {
             if(errorConfirmPassword.value) {
                 return
