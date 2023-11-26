@@ -51,6 +51,12 @@
     }
 }
 
+@media(min-width: 865px) and (max-width:1300px) {
+    .card {
+        height: 500px;
+    }
+}
+
 
 @media(max-width: 500px) {
     .img {
