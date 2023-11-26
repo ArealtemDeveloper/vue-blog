@@ -4,6 +4,7 @@
          <h1 class="title">THE BLOG</h1> 
          <LatestPosts :data="latestPosts"/>
          <PostsList :data="data"/>
+         <button class="btn">See more Posts</button>
     </main>
   </Layout>
 </template>
@@ -44,6 +45,15 @@
     color: var(--color-text-primary);
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
+  }
+
+  .btn {
+    margin-top: 30px;
+    padding: 10px 15px;
+    background-color: var(--color-purple);
+    border-radius: 10px;
+    color: #fff 
+
   }
 
   @media( max-width: 1200px) {
