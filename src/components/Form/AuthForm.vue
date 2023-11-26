@@ -71,7 +71,7 @@
 
     let user = {}
     const onSubmit = () => {
-        if( !login ) {
+        if( !props.login ) {
             if(errorConfirmPassword.value) {
                 return
             }
