@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" v-if="!isLoading">
         <div class="logo">
             <p class="copyright">© 2023</p>
             <span>ArealtemBlog</span>
@@ -13,7 +13,10 @@
 </template>
 
 <script setup lang="ts">
-
+    import { usePostsStore } from '../../store/posts';
+    import { storeToRefs } from 'pinia';
+    const postsStore = usePostsStore()
+    const { isLoading } = storeToRefs(postsStore)
 </script>
 
 <style scoped lang="scss" src="./PageFooter.style.scss"></style>

@@ -1,6 +1,6 @@
 <template>
     <Layout>
-    <BreadCrumb style="top: -50px"/>
+    <BreadCrumb/>
     <div v-if="isLoading">
         <PageLoader/>
     </div>
