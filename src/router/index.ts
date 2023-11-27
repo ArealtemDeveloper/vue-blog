@@ -1,6 +1,7 @@
 // Composables
 import { Links, PathNames } from '@/constants/route.constants'
 import AboutVue from '@/views/AboutView/AboutView.vue'
+import BlogListVue from '@/views/BlogListView/BlogListView.vue'
 import HomeVue from '@/views/HomeView/HomeView.vue'
 import LoginVue from '@/views/LoginView/LoginView.vue'
 import PostVue from '@/views/PostView/PostView.vue'
@@ -58,6 +59,24 @@ export default createRouter({
           }
         ]
       }
+    },
+    {
+      path: Links.BLOG, 
+      name: PathNames.BLOG,
+      component: BlogListVue,
+      meta: {
+        title: 'Blog',
+        breadcrumb: () => [
+          {
+            title: 'Home',
+            link: Links.HOME
+          },
+          {
+            title: 'Blog',
+          }
+        ]
+      }
+
     },
     {path: '/login', component: LoginVue},
     {path: '/register', component: RegisterVue},

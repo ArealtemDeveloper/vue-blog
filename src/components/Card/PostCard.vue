@@ -1,8 +1,9 @@
 <template>
-    <div class="card">
+    <div class="card" :class="{list: isBlogList}">
         <div>
             <img :src="img" class="img"  alt="img">
         </div>
+        <div class="content">
         <p class="date">{{ date.replace(/\T.*/, "") }}</p>
         <div class="title_block">
             <h1 class="card_title">{{ title }} </h1>
@@ -12,12 +13,13 @@
         <div class="categories">
             <div v-for="category in categoryArr" :key="category" class="category">{{ category }}</div>
         </div>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
     import router from '@/router';
-    const props = defineProps(['title', 'text', 'img', 'id', 'date', 'category'])
+    const props = defineProps(['title', 'text', 'img', 'id', 'date', 'category', "isBlogList"])
     const categoryArr = props.category.split(' ')
 
     const redirectToPost = () => {

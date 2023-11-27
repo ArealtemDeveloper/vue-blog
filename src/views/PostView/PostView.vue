@@ -1,8 +1,11 @@
 <template>
     <Layout>
     <BreadCrumb/>
-        <div v-if="isLoading"> Loading ... </div>
+        <div v-if="isLoading">
+            <PageLoader/>
+        </div>
         <div class="container" v-else-if="post">
+        <div class="main">
                 <div class="img_container">
                     <img :src="post.img" class="img" alt="img">
                 </div>
@@ -21,6 +24,7 @@
                     <p>{{ post.desc }}</p>
                 </div>
         </div>
+        </div>
         <div v-else>
             ПОСТ НЕ НАЙДЕН
         </div>
@@ -29,6 +33,7 @@
 
 <script setup lang="ts">
 import BreadCrumb from '@/components/BreadCrumb/BreadCrumb.vue'
+import PageLoader from '@/components/PageLoader/PageLoader.vue';
 import Layout from '@/layouts/Layout/PageLayout.vue';
 import { onMounted,  } from 'vue';
 import { usePostsStore } from '@/store/posts';

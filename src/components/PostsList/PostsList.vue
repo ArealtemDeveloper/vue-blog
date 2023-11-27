@@ -1,6 +1,6 @@
 <template>
-    <h1 class="title">Other Blog Posts</h1>
-    <div class="container">
+    <h1 class="title" :class="{list: isBlogList}">Other Blog Posts</h1>
+    <div class="container" :class="{list: isBlogList}">
         <div v-for="card in data" :key="card.id">
             <PostCard 
             :title="card.title" 
@@ -9,6 +9,7 @@
             :id="card.id"
             :date="card.date"
             :category="card.cat"
+            :isBlogList="isBlogList"
             />
         </div>
     </div>
@@ -16,7 +17,7 @@
 
 <script setup lang="ts">
     import PostCard from '@/components/Card/PostCard.vue'
-    const props = defineProps(["data"])
+    const props = defineProps(["data", "isBlogList"])
 
 </script>
 
