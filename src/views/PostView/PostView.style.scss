@@ -7,9 +7,11 @@
 }
 .main {
     padding: 30px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    position: relative;
 }
 
 .img_container {

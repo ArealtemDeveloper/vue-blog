@@ -1,9 +1,9 @@
 <template>
     <Layout>
+    <BreadCrumb style="top: -50px"/>
     <div v-if="isLoading">
         <PageLoader/>
     </div>
-        <BreadCrumb/>
         <div class="container">
          <PostsList :data="posts" :isBlogList="isBlogList"/>
         </div>
