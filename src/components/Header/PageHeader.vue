@@ -17,7 +17,7 @@
       <div>
         
       </div>
-      <LoginBtn v-if="user"
+      <LoginBtn v-if="isAuth"
       :name="'Logout'"
       :url="'/'"
       :logout="logout"
@@ -56,16 +56,13 @@
   import LoginBtn from '@/components/LoginBtn/LoginBtn.vue'
   import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher.vue'
   import { ref } from 'vue';
-  import axios from 'axios'
+  import { useAuthStore } from '@/store/auth';
+  import { storeToRefs } from 'pinia';
 
   const navOpen = ref<boolean>(false)
-  const user = ref(localStorage.getItem('user'))
-  const logout = async () => {
-    await axios.post('https://blog-backend-rosy.vercel.app/api/auth/logout')
-    localStorage.removeItem('user')
-    window.location.reload()
-  }
-
+  const authStore = useAuthStore()
+  const { logout } = authStore
+  const { isAuth, user } = storeToRefs(authStore)
 </script>
 
 <style scoped lang="scss" src="./PageHeader.style.scss"></style>

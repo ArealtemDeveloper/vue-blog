@@ -7,31 +7,21 @@
         refTo='login'
         refName='Login'
         :login='login'
-        :fetchUser="fetchUser"
+        :fetchUser="registerUser"
         :errorMsg="errorMsg"
         />
 </template>
 
 <script setup lang="ts">
 import AuthForm from '@/components/Form/AuthForm.vue';
-import { IUser } from './RegisterView.types'
+import { useAuthStore } from '@/store/auth';
+import { storeToRefs } from 'pinia';
 import { ref } from 'vue'
-import axios from 'axios';
-// import router from '@/router';
-import { useRouter } from 'vue-router';
-
-const router = useRouter()
 
 const login = ref<boolean>(false)
-let errorMsg = ref('')
-const fetchUser = async (user:IUser) => {
-        try {
-                const res = await axios.post('https://blog-backend-rosy.vercel.app/api/auth/register', user)
-                router.push('/login')
-        } catch (error) {
-                errorMsg.value = error.response.data
-        }
-}
+const authStore = useAuthStore()
+const { registerUser } = authStore
+const { errorMsg } = storeToRefs(authStore)
 </script>
 
 <style scoped lang="scss" src="./RegisterView.style.scss"></style>

@@ -18,30 +18,4 @@
 
 </script>
 
-<style lang="scss">
-
-    .toggle {
-        display: flex;
-        padding: 8px 16px;
-        gap: 16px;
-        border-radius: 29px;
-        background: var(--color-purple);
-        position: relative;
-        cursor: pointer;
-        user-select: none;
-    }
-
-    .ball {
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        background-color: var(--color-background-secondary);
-        border-radius: 50%;
-    }
-    .light {
-        left: 16px;
-    }
-    .dark {
-        right: 16px;
-    }
-</style>
+<style scoped lang="scss" src="./ThemeSwitcher.style.scss"></style>
