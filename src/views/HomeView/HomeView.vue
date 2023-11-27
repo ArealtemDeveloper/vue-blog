@@ -1,13 +1,13 @@
 <template>
   <Layout>
-    <div class="loader" v-if="isLoading">
+    <div v-if="isLoading">
         <PageLoader/>
     </div>
     <main class="main" v-else>
          <h1 class="title">THE BLOG</h1> 
          <LatestPosts :data="latestPosts"/>
-         <PostsList :data="posts"/>
-         <button class="btn">See more Posts</button>
+         <PostsList :data="posts" :isBlogList="isBlogList"/>
+         <RouterLink to="/blog" class="btn">See more Posts</RouterLink>
     </main>
   </Layout>
 </template>
@@ -20,7 +20,9 @@
   import { onMounted } from 'vue';
   import { usePostsStore } from '@/store/posts';
   import { storeToRefs } from 'pinia';
+  import { ref } from 'vue';
 
+  const isBlogList = ref(false)
   const postsStore = usePostsStore()
   const { getAllPosts } = postsStore
   const { isLoading, latestPosts, posts} = storeToRefs(postsStore)
@@ -56,14 +58,8 @@
     background-color: var(--color-purple);
     border-radius: 10px;
     margin-bottom: 150px;
-    color: #fff 
-  }
-
-  .loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    color: #fff;
+    text-decoration: none;
   }
 
   @media( max-width: 1200px) {
