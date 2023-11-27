@@ -9,14 +9,12 @@
 </template>
 
 <script setup lang="ts">
-    import { inject } from 'vue'
+    import { useThemeStore } from '@/store/theme';
+    import { storeToRefs } from 'pinia';
 
-    const theme:any = inject('theme')
-    const toggleTheme = () => {
-        theme.value = theme.value === 'light' ? 'dark' : 'light'
-        document.body.setAttribute('data-theme', theme.value)
-        localStorage.setItem('theme', theme.value)
-    }
+    const themeStore = useThemeStore()
+    const { theme } = storeToRefs(themeStore);
+    const { toggleTheme } = themeStore
 
 </script>
 

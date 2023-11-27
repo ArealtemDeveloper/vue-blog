@@ -42,11 +42,12 @@
           nav
         >
           <RouterLink style="text-decoration: none; color: inherit;" to="/"><v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home"></v-list-item></RouterLink>
-          <RouterLink style="text-decoration: none; color: inherit;" to="/about"><v-list-item prepend-icon="mdi-forum" title="About" value="about"></v-list-item></RouterLink>
-          <v-list-item prepend-icon="mdi-post" title="Blog" value="about"></v-list-item>
+          <RouterLink style="text-decoration: none; color: inherit;" to="/about"><v-list-item prepend-icon="mdi-information" title="About" value="about"></v-list-item></RouterLink>
+          <RouterLink style="text-decoration: none; color: inherit;" to="/about"><v-list-item prepend-icon="mdi-view-list" title="Blog" value="blog"></v-list-item></RouterLink>
+          <RouterLink style="text-decoration: none; color: inherit;" to="/about"><v-list-item prepend-icon="mdi-post" title="Create Post" value="Create Post"></v-list-item></RouterLink>
         </v-list>
       </v-navigation-drawer>
-      <v-main style="height: 150px" ></v-main>
+      <v-main style="height: 180px" ></v-main>
     </v-layout>
   </v-card>
 </template>
