@@ -80,5 +80,5 @@ export default createRouter({
     },
     {path: '/login', component: LoginVue},
     {path: '/register', component: RegisterVue},
-  ]
+  ],
 })
