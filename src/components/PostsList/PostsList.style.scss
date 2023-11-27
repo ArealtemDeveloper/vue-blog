@@ -7,10 +7,12 @@
     gap: 50px;
 }
 
-.list {
+.container.list {
     max-width: 100vw;
-    margin-top: 100px;
+    margin: 70px 0;
     flex-direction: column;
+    align-items: center;
+    gap: 50px;
 }
 
 .title {

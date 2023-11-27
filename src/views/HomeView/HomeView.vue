@@ -57,7 +57,7 @@
     padding: 10px 15px;
     background-color: var(--color-purple);
     border-radius: 10px;
-    margin-bottom: 150px;
+    margin-bottom: 70px;
     color: #fff;
     text-decoration: none;
   }
