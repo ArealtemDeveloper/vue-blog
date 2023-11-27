@@ -22,6 +22,10 @@ export const usePostsStore = defineStore('posts', () => {
                 posts.value = res.data
                 latestPosts.value = res.data.slice(-3)
             }
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
             isLoading.value = false
         } catch (error) {
             console.log(error)
