@@ -1,9 +1,12 @@
 <template>
   <Layout>
-    <main class="main">
+    <div class="loader" v-if="isLoading">
+        <PageLoader/>
+    </div>
+    <main class="main" v-else>
          <h1 class="title">THE BLOG</h1> 
          <LatestPosts :data="latestPosts"/>
-         <PostsList :data="data"/>
+         <PostsList :data="posts"/>
          <button class="btn">See more Posts</button>
     </main>
   </Layout>
@@ -13,16 +16,16 @@
   import Layout from '@/layouts/Layout/PageLayout.vue';
   import PostsList from '@/components/PostsList/PostsList.vue';
   import LatestPosts from '@/components/LatestPosts/LatestPosts.vue';
+  import PageLoader from '@/components/PageLoader/PageLoader.vue';
   import { onMounted } from 'vue';
-  import axios from 'axios';
-  import { ref } from 'vue';
+  import { usePostsStore } from '@/store/posts';
+  import { storeToRefs } from 'pinia';
 
-  const data = ref([])
-  const latestPosts = ref([])
-  onMounted(async() => {
-    const res = await axios.get('https://blog-backend-rosy.vercel.app/api/posts')
-    latestPosts.value = res.data.slice(-3)
-    data.value = res.data
+  const postsStore = usePostsStore()
+  const { getAllPosts } = postsStore
+  const { isLoading, latestPosts, posts} = storeToRefs(postsStore)
+  onMounted(( ) => {
+    getAllPosts()
   })
 </script>
 
@@ -52,8 +55,15 @@
     padding: 10px 15px;
     background-color: var(--color-purple);
     border-radius: 10px;
+    margin-bottom: 150px;
     color: #fff 
+  }
 
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
   }
 
   @media( max-width: 1200px) {
