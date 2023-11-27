@@ -17,16 +17,18 @@
       <div>
         
       </div>
-      <LoginBtn v-if="user"
-      :name="'Logout'"
-      :url="'/'"
-      :logout="logout"
+      <img class='logout' v-if="user"
+      src="../../assets/images/exit.svg"
+      @click="logout"
       />
       <LoginBtn v-else
       :name="'Login'"
       :url="'/login'"
       />
-      <p class="username">{{ user ? JSON.parse(user).username : null}}</p>
+      <span class="username" v-if="user">
+      {{ JSON.parse(user).username }}
+      <img src="../../assets/images/settings.svg" alt="img">
+      </span>
       <ThemeSwitcher/>
   </v-app-bar>
   <v-card  v-show="navOpen" class="mt-2 ml-2 popUp" width="300" elevation="5">
