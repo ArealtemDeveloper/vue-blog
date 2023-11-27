@@ -17,7 +17,7 @@
       <div>
         
       </div>
-      <LoginBtn v-if="isAuth"
+      <LoginBtn v-if="user"
       :name="'Logout'"
       :url="'/'"
       :logout="logout"
@@ -57,12 +57,11 @@
   import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher.vue'
   import { ref } from 'vue';
   import { useAuthStore } from '@/store/auth';
-  import { storeToRefs } from 'pinia';
+  const user = ref(localStorage.getItem('user'))
 
   const navOpen = ref<boolean>(false)
   const authStore = useAuthStore()
   const { logout } = authStore
-  const { isAuth, user } = storeToRefs(authStore)
 </script>
 
 <style scoped lang="scss" src="./PageHeader.style.scss"></style>

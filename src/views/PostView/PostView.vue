@@ -1,27 +1,28 @@
 <template>
     <Layout>
     <BreadCrumb/>
-        <div class="container" v-if="data">
+        <div v-if="isLoading"> Loading ... </div>
+        <div class="container" v-else-if="post">
                 <div class="img_container">
-                    <img :src="data.img" class="img" alt="img">
+                    <img :src="post.img" class="img" alt="img">
                 </div>
                 <div class="content">
-                    <p class="date">{{data.date.replace(/\T.*/, "")}}</p>
+                    <p class="date">{{post.date.replace(/\T.*/, "")}}</p>
                     <div class="author">
-                        <div v-if="data.userImg" class="avatar">
-                            <img :src="data.userImg" alt="img">
+                        <div v-if="post.userImg" class="avatar">
+                            <img :src="post.userImg" alt="img">
                         </div>
                         <div v-else class="avatar avatar_placeholder">
                             <img src="../../assets/images/user.svg" alt="">
                         </div>
-                        <span>{{data.username}}</span>
+                        <span>{{post.username}}</span>
                     </div>
-                    <h1>{{ data.title }}</h1>
-                    <p>{{ data.desc }}</p>
+                    <h1>{{ post.title }}</h1>
+                    <p>{{ post.desc }}</p>
                 </div>
         </div>
         <div v-else>
-            <p>Loading</p>
+            ПОСТ НЕ НАЙДЕН
         </div>
     </Layout>
 </template>
@@ -29,27 +30,16 @@
 <script setup lang="ts">
 import BreadCrumb from '@/components/BreadCrumb/BreadCrumb.vue'
 import Layout from '@/layouts/Layout/PageLayout.vue';
-import { onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router';
-import axios from 'axios';
+import { onMounted,  } from 'vue';
+import { usePostsStore } from '@/store/posts';
+import { storeToRefs } from 'pinia';
 
-const route = useRoute()
-const data = ref()
-const postId = +route.params.id
-const loading = ref(true)
 
-onMounted(async() => {
-    try {
-        const res = await axios.get(`https://blog-backend-rosy.vercel.app/api/posts/${postId}`)
-        data.value = res.data
-        loading.value = false
-        window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-        });
-    } catch (error) {
-        console.log(error)
-    }
+const postsStore = usePostsStore()
+const { getOnePost } = postsStore
+const { post, isLoading } = storeToRefs(postsStore)
+onMounted(() => {
+    getOnePost()
 })
 </script>
 

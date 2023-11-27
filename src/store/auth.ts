@@ -3,18 +3,16 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 import router from '@/router';
 import { IUser } from '@/views/LoginView/LoginView.types';
+import { IUserRegister } from '@/views/RegisterView/RegisterView.types';
 
 export const useAuthStore = defineStore('auth', () => {
-  const isAuth = ref<boolean>(false);
   const errorMsg = ref<string>('')
-  const user = ref(localStorage.getItem('user'))
 
   //methods 
 
   const loginUser = async(user: IUser) => {
     try {
       const res = await axios.post('https://blog-backend-rosy.vercel.app/api/auth/login', user)
-      if(res) isAuth.value = true
       localStorage.setItem('user', JSON.stringify(res.data))
       router.push('/')
     } catch (error) {
@@ -23,7 +21,7 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
-  const registerUser = async(user: IUser) => {
+  const registerUser = async(user: IUserRegister) => {
     try {
       const res = await axios.post('https://blog-backend-rosy.vercel.app/api/auth/register', user)
       router.push('/login')
@@ -35,7 +33,6 @@ export const useAuthStore = defineStore('auth', () => {
   const logout = async() => {
     try {
         const res = await axios.post('https://blog-backend-rosy.vercel.app/api/auth/logout')
-        if(res) isAuth.value = false
         localStorage.removeItem('user')
         window.location.reload()
       } catch (error) {
@@ -44,9 +41,7 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   return {
-    isAuth,
     errorMsg,
-    user,
     logout,
     loginUser,
     registerUser
