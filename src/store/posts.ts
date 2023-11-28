@@ -39,6 +39,7 @@ export const usePostsStore = defineStore('posts', () => {
         try {
             const res = await axios.get(`https://blog-backend-rosy.vercel.app/api/posts/${+route.params.id}`)
             if(res) post.value = res.data
+            console.log(res.data)
             window.scrollTo({
                 top: 0,
                 behavior: "smooth",

@@ -22,6 +22,7 @@
                     </div>
                     <h1>{{ post.title }}</h1>
                     <p>{{ post.desc }}</p>
+                    <p class="extended">{{ post.extended }}</p>
                 </div>
         </div>
         </div>
@@ -43,6 +44,7 @@ import { storeToRefs } from 'pinia';
 const postsStore = usePostsStore()
 const { getOnePost } = postsStore
 const { post, isLoading } = storeToRefs(postsStore)
+console.log(post)
 onMounted(() => {
     getOnePost()
 })
