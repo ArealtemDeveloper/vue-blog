@@ -38,6 +38,7 @@
 .buttons {
     display: flex;
     align-items: center;
+    gap: 15px;
     color: var(--color-text-primary);
 }
 
@@ -57,6 +58,7 @@
     flex-direction: column;
     align-items: center;
     gap: 40px;
+    margin-bottom: 30px;
 }
 
 .input_container {
@@ -118,5 +120,19 @@
     content {
         margin: 0;
         padding: 100px 0;
+    }
+
+    .inputs_container {
+        .label {
+            left: -10px;
+            padding: 2px 5px;
+        }
+    }
+
+    .editor_container {
+        .label {
+            left: -10px;
+            padding: 2px 5px;
+        }
     }
 }
