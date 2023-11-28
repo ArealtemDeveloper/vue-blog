@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-    import router from '@/router';
+    import { router } from '@/router';
     const props = defineProps(['title', 'text', 'img', 'id', 'date', 'category', "isBlogList"])
     const categoryArr = props.category.split(' ')
 
