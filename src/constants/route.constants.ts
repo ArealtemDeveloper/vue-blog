@@ -2,7 +2,10 @@ export enum Links {
     HOME = '/',
     ABOUT ='/about',
     POSTS = '/posts',
-    BLOG = '/blog'
+    BLOG = '/blog',
+    USER = '/user',
+    LOGIN = '/login',
+    REGISTER = '/register',
   }
   
   export enum PathNames {
@@ -10,5 +13,8 @@ export enum Links {
     ABOUT ='about',
     POSTS = 'posts',
     POST = 'post',
-    BLOG = 'blog'
+    BLOG = 'blog',
+    USER = 'user',
+    LOGIN = 'login',
+    REGISTER = 'register',
   }

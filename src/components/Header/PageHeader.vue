@@ -4,15 +4,6 @@
       <v-app-bar-title class="d-none d-lg-block">
         <h3 class="header_title">ArealtemBlog</h3>
       </v-app-bar-title>
-      <v-text-field 
-      density="compact" 
-      class="d-none d-sm-block"
-      variant="solo" 
-      label="Search post" 
-      append-inner-icon="mdi-magnify" 
-      single-line 
-      hide-details 
-      flat/>
       <v-spacer></v-spacer>
       <div>
         
@@ -27,7 +18,11 @@
       />
       <span class="username" v-if="user">
       {{ JSON.parse(user).username }}
-      <img src="../../assets/images/settings.svg" alt="img">
+      <img 
+      @click="getUserInfo(JSON.parse(user).id)"
+      src="../../assets/images/settings.svg" 
+      alt="img"
+      >
       </span>
       <ThemeSwitcher/>
   </v-app-bar>
@@ -59,10 +54,13 @@
   import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher.vue'
   import { ref } from 'vue';
   import { useAuthStore } from '@/store/auth';
-  const user = ref(localStorage.getItem('user'))
+  import { useUserStore } from '@/store/user';
+  const user = localStorage.getItem('user')
 
   const navOpen = ref<boolean>(false)
   const authStore = useAuthStore()
+  const userStore = useUserStore()
+  const { getUserInfo } = userStore
   const { logout } = authStore
 </script>
 

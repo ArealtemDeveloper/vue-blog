@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import axios from 'axios';
-import router from '@/router';
+import { router } from '@/router';
 import { IUser } from '@/views/LoginView/LoginView.types';
 import { IUserRegister } from '@/views/RegisterView/RegisterView.types';
 

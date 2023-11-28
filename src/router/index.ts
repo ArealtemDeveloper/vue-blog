@@ -5,10 +5,11 @@ import BlogListVue from '@/views/BlogListView/BlogListView.vue'
 import HomeVue from '@/views/HomeView/HomeView.vue'
 import LoginVue from '@/views/LoginView/LoginView.vue'
 import PostVue from '@/views/PostView/PostView.vue'
+import UserVue from '@/views/UserView/UserView.vue'
 import RegisterVue from '@/views/RegisterView/RegisterView.vue'
 import { RouteLocationNormalizedLoaded, createRouter, createWebHistory } from 'vue-router'
 
-export default createRouter({
+export const router = createRouter({
   history: createWebHistory(),
   routes:[
     {
@@ -76,9 +77,44 @@ export default createRouter({
           }
         ]
       }
+    },
+    {
+      path: Links.USER, 
+      name: PathNames.USER,
+      component: UserVue,
+      meta: {
+        title: 'User',
+        requiredAuth: true,
+        breadcrumb: () => [
+          {
+            title: 'Home',
+            link: Links.HOME
+          },
+          {
+            title: 'User',
+          }
+        ]
+      }
 
     },
-    {path: '/login', component: LoginVue},
-    {path: '/register', component: RegisterVue},
+    {
+      path: '/login', 
+      name: PathNames.LOGIN,
+      component: LoginVue
+    },
+    {
+      path: '/register', 
+      name: PathNames.REGISTER,
+      component: RegisterVue
+  },
   ],
 })
+
+router.beforeEach((to, from, next) => {
+  const user = localStorage.getItem('user')
+  if (to.meta.requiredAuth && !user) {
+    next({ name: PathNames.LOGIN });
+  } else {
+    next();
+  }
+});
