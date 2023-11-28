@@ -15,7 +15,24 @@
                 </div>
             </div>
                 <div class="buttons" v-if="editor">
-                <button @click="editor.chain().focus().toggleItalic().run()" :disabled="!editor.can().chain().focus().toggleItalic().run()">Italic</button>
+                <button @click="editor.chain().focus().toggleItalic().run()" :disabled="!editor.can().chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('bold') }">
+                    <img src="../../assets/images/italic.svg" alt="img">
+                </button>
+                <button @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
+                    <img src="../../assets/images/bold.svg" alt="img">
+                </button>
+                <button @click="editor.chain().focus().unsetAllMarks().run()">
+                    <img src="../../assets/images/return.svg" alt="img">
+                </button>
+                <button @click="editor.chain().focus().toggleHeading({ level: 1 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }">
+                    <img src="../../assets/images/h1.svg" alt="img">
+                </button>
+                <button @click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }">
+                    <img src="../../assets/images/h2.svg" alt="img">
+                </button>
+                <button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }">
+                    <img src="../../assets/images/h3.svg" alt="img">
+                </button>
                 </div>
                 <div class="editor_container">
                 <span class="label">Main Text</span>
@@ -42,7 +59,7 @@ const editor = useEditor({
   extensions: [
     StarterKit,
     Heading.configure({
-        levels: [1, 2, 3 ,4]
+        levels: [1, 2, 3]
     })
   ],
 })
