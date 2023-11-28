@@ -7,6 +7,7 @@ import LoginVue from '@/views/LoginView/LoginView.vue'
 import PostVue from '@/views/PostView/PostView.vue'
 import UserVue from '@/views/UserView/UserView.vue'
 import RegisterVue from '@/views/RegisterView/RegisterView.vue'
+import CreatePostVue from '@/views/CreatePostView/CreatePostView.vue'
 import { RouteLocationNormalizedLoaded, createRouter, createWebHistory } from 'vue-router'
 
 export const router = createRouter({
@@ -92,6 +93,25 @@ export const router = createRouter({
           },
           {
             title: 'User',
+          }
+        ]
+      }
+
+    },
+    {
+      path: Links.CREATEPOST, 
+      name: PathNames.CREATEPOST,
+      component: CreatePostVue,
+      meta: {
+        title: 'Create Post',
+        requiredAuth: true,
+        breadcrumb: () => [
+          {
+            title: 'Home',
+            link: Links.HOME
+          },
+          {
+            title: 'Create Post',
           }
         ]
       }

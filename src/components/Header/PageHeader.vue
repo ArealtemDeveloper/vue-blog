@@ -41,7 +41,7 @@
           <RouterLink style="text-decoration: none; color: inherit;" to="/"><v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home"></v-list-item></RouterLink>
           <RouterLink style="text-decoration: none; color: inherit;" to="/about"><v-list-item prepend-icon="mdi-information" title="About" value="about"></v-list-item></RouterLink>
           <RouterLink style="text-decoration: none; color: inherit;" to="/blog"><v-list-item prepend-icon="mdi-view-list" title="Blog" value="blog"></v-list-item></RouterLink>
-          <RouterLink style="text-decoration: none; color: inherit;" to="/about"><v-list-item prepend-icon="mdi-post" title="Create Post" value="Create Post"></v-list-item></RouterLink>
+          <RouterLink style="text-decoration: none; color: inherit;" to="/createPost"><v-list-item prepend-icon="mdi-post" title="Create Post" value="Create Post"></v-list-item></RouterLink>
         </v-list>
       </v-navigation-drawer>
       <v-main style="height: 180px" ></v-main>
