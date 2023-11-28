@@ -4,6 +4,7 @@ export enum Links {
     POSTS = '/posts',
     BLOG = '/blog',
     USER = '/user',
+    CREATEPOST= '/createPost',
     LOGIN = '/login',
     REGISTER = '/register',
   }
@@ -15,6 +16,7 @@ export enum Links {
     POST = 'post',
     BLOG = 'blog',
     USER = 'user',
+    CREATEPOST= 'createPost',
     LOGIN = 'login',
     REGISTER = 'register',
   }
