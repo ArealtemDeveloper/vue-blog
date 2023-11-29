@@ -10,7 +10,7 @@
                     <img :src="post.img" class="img" alt="img">
                 </div>
                 <div class="content">
-                    <p class="date">{{post.date.replace(/\T.*/, "")}}</p>
+                    <p class="date">{{moment(post.date).fromNow()}}</p>
                     <div class="author">
                         <div v-if="post.userImg" class="avatar">
                             <img :src="post.userImg" alt="img">
@@ -36,6 +36,7 @@
 import BreadCrumb from '@/components/BreadCrumb/BreadCrumb.vue'
 import PageLoader from '@/components/PageLoader/PageLoader.vue';
 import Layout from '@/layouts/Layout/PageLayout.vue';
+import moment from 'moment';
 import { onMounted,  } from 'vue';
 import { usePostsStore } from '@/store/posts';
 import { storeToRefs } from 'pinia';

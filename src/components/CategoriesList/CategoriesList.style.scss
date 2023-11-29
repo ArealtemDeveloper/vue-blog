@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.category {
+    padding: 5px 10px;
+    background-color: var(--color-purple);
+    color: #fff;
+    border-radius: 15px;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
