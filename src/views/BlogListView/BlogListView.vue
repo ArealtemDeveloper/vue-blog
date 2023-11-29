@@ -5,7 +5,10 @@
         <PageLoader/>
     </div>
         <div class="container">
-         <PostsList :data="posts" :isBlogList="isBlogList"/>
+            <div class="content">
+                <CategoriesList :getAllPosts="getAllPosts"/>
+                <PostsList :data="posts" :isBlogList="isBlogList"/>
+            </div>
         </div>
     </Layout>
 </template>
@@ -15,6 +18,7 @@ import Layout from '@/layouts/Layout/PageLayout.vue'
 import BreadCrumb from '@/components/BreadCrumb/BreadCrumb.vue'
 import PostsList from '@/components/PostsList/PostsList.vue';
 import PageLoader from '@/components/PageLoader/PageLoader.vue';
+import CategoriesList from '@/components/CategoriesList/CategoriesList.vue';
 import { usePostsStore } from '@/store/posts';
 import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
