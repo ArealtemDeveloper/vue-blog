@@ -1,22 +1,26 @@
 export const categories = [
     {
         id: 1,
-        name: 'Leadership'
+        name: 'All'
     },
     {
         id: 2,
-        name: 'Product'
+        name: 'Leadership'
     },
     {
         id: 3,
-        name: 'Design'
+        name: 'Product'
     },
     {
         id: 4,
-        name: 'Development'
+        name: 'Design'
     },
     {
         id: 5,
+        name: 'Development'
+    },
+    {
+        id: 6,
         name: 'Podcasts'
     },
 

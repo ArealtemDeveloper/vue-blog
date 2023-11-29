@@ -3,18 +3,6 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 
-interface IPost {
-    id: number,
-    cat: string,
-    date: string,
-    title: string,
-    desc: string,
-    extended: string,
-    img: string,
-    uid: number
-} 
-
-
 export const usePostsStore = defineStore('posts', () => {
     const posts = ref([]);
     const post = ref()
@@ -28,7 +16,7 @@ export const usePostsStore = defineStore('posts', () => {
     const getAllPosts = async () => {
         isLoading.value = true
         try {
-            const res = await axios.get('https://blog-backend-rosy.vercel.app/api/posts')
+            const res = await axios.get(`https://blog-backend-rosy.vercel.app/api/posts`)
             if(res) {
                 posts.value = res.data
                 latestPosts.value = res.data.slice(-3)
@@ -45,13 +33,11 @@ export const usePostsStore = defineStore('posts', () => {
         }
     }
 
-    const getAllPostsByCategories = async (category:string) => {
+    const getAllPostsByCategories = async (category?:string) => {
         isLoading.value = true
         try {
             const res = await axios.get(`https://blog-backend-rosy.vercel.app/api/posts/?cat=${category}`)
-            if(res) {
-                posts.value = res.data
-            }
+            if(res) posts.value = res.data
             window.scrollTo({
                 top: 0,
                 behavior: "smooth",

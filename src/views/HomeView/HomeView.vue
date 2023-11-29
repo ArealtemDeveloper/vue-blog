@@ -26,7 +26,8 @@
   const postsStore = usePostsStore()
   const { getAllPosts } = postsStore
   const { isLoading, latestPosts, posts} = storeToRefs(postsStore)
-  onMounted(( ) => {
+  
+  onMounted(() => {
     getAllPosts()
   })
 </script>
