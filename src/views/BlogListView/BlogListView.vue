@@ -6,7 +6,8 @@
     </div>
         <div class="container">
             <div class="content">
-                <CategoriesList :getAllPosts="getAllPosts"/>
+                <SearchField/>
+                <CategoriesList :data="posts"/>
                 <PostsList :data="posts" :isBlogList="isBlogList"/>
             </div>
         </div>
@@ -19,11 +20,11 @@ import BreadCrumb from '@/components/BreadCrumb/BreadCrumb.vue'
 import PostsList from '@/components/PostsList/PostsList.vue';
 import PageLoader from '@/components/PageLoader/PageLoader.vue';
 import CategoriesList from '@/components/CategoriesList/CategoriesList.vue';
+import SearchField from '@/components/SearchField/SearchField.vue';
 import { usePostsStore } from '@/store/posts';
 import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
 import { ref } from 'vue';
-
 
 const isBlogList = ref(true)
 const postsStore = usePostsStore()
@@ -31,7 +32,7 @@ const { getAllPosts } = postsStore
 const { isLoading, posts } = storeToRefs(postsStore)
 
 onMounted(() => {
-    getAllPosts()
+        getAllPosts()
 })
 
 </script>

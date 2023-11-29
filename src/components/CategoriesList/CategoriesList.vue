@@ -1,6 +1,11 @@
 <template>
     <div class="container">
-        <div v-for="category in categories" :key="category.id" class="category" @click="onLoadCategories(category.name)">
+        <div 
+        v-for="category in categories" 
+        :key="category.id" class="category" 
+        @click="onLoadCategories(category.name)"
+        :class="{ active: selectedCategory === category.name}"
+        >
             {{  category.name }}
         </div>
     </div>
@@ -10,13 +15,25 @@
 import { useRoute } from 'vue-router';
 import { categories } from './data';
 import { usePostsStore } from '@/store/posts';
+import { ref } from 'vue'
 
 const route = useRoute()
 const postsStore = usePostsStore()
-const { getAllPostsByCategories } = postsStore
+const active = ref(false)
+const selectedCategory = ref('All')
+const { getAllPostsByCategories,getAllPosts } = postsStore
+
+
 const onLoadCategories = (name:string) => {
-    route.query.cat = name;
-    getAllPostsByCategories(name);    
+    if(name === 'All') {
+        selectedCategory.value = name;
+        route.query.cat = '';
+        getAllPosts()
+    }else {
+        selectedCategory.value = name;
+        route.query.cat = 'name';
+        getAllPostsByCategories(name)
+    }
 }
 </script>
 
