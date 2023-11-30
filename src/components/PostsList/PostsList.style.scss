@@ -25,6 +25,16 @@
 .title.list {
     display: none;
 }
+
+.back {
+    display: none;
+}
+.active {
+    display: block;
+    width: 30vw;
+    color: var(--color-text-primary);
+    align-self: baseline;
+}
 @media(min-width: 900px) and (max-width:1300px) {
     .container {
         width: 900px;

@@ -8,6 +8,7 @@ export const usePostsStore = defineStore('posts', () => {
     const post = ref()
     const latestPosts = ref([]);
     const isLoading = ref<boolean>(false)
+    const btnVisible = ref<boolean>(false)
 
     const route = useRoute();
 
@@ -17,6 +18,7 @@ export const usePostsStore = defineStore('posts', () => {
         isLoading.value = true
         try {
             const res = await axios.get(`https://blog-backend-rosy.vercel.app/api/posts`)
+            btnVisible.value = false
             if(res) {
                 posts.value = res.data
                 latestPosts.value = res.data.slice(-3)
@@ -33,10 +35,29 @@ export const usePostsStore = defineStore('posts', () => {
         }
     }
 
+    const getAllPostsByQuery = async (text:string) => {
+        isLoading.value = true
+        try {
+            const res = await axios.post('https://blog-backend-rosy.vercel.app/api/posts/search/get', {"text": text})
+            btnVisible.value = true
+            if(res) posts.value = res.data
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+            isLoading.value = false
+        } catch (error) {
+            console.log(error)
+        } finally {
+            isLoading.value = false
+        }
+    }
+
     const getAllPostsByCategories = async (category?:string) => {
         isLoading.value = true
         try {
             const res = await axios.get(`https://blog-backend-rosy.vercel.app/api/posts/?cat=${category}`)
+            btnVisible.value = false
             if(res) posts.value = res.data
             window.scrollTo({
                 top: 0,
@@ -71,6 +92,8 @@ export const usePostsStore = defineStore('posts', () => {
         posts,
         post,
         latestPosts,
+        btnVisible,
+        getAllPostsByQuery,
         getAllPostsByCategories,
         isLoading,
         getAllPosts,

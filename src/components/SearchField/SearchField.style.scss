@@ -9,6 +9,11 @@
         padding: 5px 20px;
         border: 1px solid var(--color-background-secondary);
         border-radius: 15px;
+        display: flex;
+
+        img {
+            cursor: pointer;
+        }
     }
 
     input {
@@ -17,5 +22,31 @@
         width: 100%;
         outline: none;
         font-size: 18px;
+    }
+}
+
+.help {
+    display: none;
+}
+
+.visible {
+    display: flex;
+    width: 20%;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    color: var(--color-text-primary);
+}
+
+@media(max-width:800px) {
+    .visible {
+        width: 80%;
+    }
+}
+
+
+@media(max-width:375px) {
+    .visible {
+        display: none;
     }
 }
