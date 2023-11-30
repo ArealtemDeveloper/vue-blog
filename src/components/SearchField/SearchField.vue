@@ -5,7 +5,7 @@
             <div class="help" :class="{visible: value}">
                 Press "Enter"
             </div>
-            <img src="../../assets/images/search.svg" alt="search">
+            <img src="../../assets/images/search.svg" alt="search" @click="handleSearch">
         </div>
     </div>
 </template>
