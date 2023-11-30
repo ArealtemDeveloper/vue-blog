@@ -56,7 +56,7 @@ export const usePostsStore = defineStore('posts', () => {
         }
     }
 
-    const getAllPostsByCategories = async (category?:string) => {
+    const getAllPostsByCategories = async (category:string) => {
         isLoading.value = true
         try {
             const res = await axios.get(`https://blog-backend-rosy.vercel.app/api/posts/?cat=${category}`)
