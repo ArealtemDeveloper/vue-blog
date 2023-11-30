@@ -16,11 +16,12 @@ import { useRoute } from 'vue-router';
 import { categories } from './data';
 import { usePostsStore } from '@/store/posts';
 import { ref } from 'vue'
+import { storeToRefs } from 'pinia';
 
 const route = useRoute()
 const postsStore = usePostsStore()
+const { selectedCategory } = storeToRefs(postsStore)
 const active = ref(false)
-const selectedCategory = ref('All')
 const { getAllPostsByCategories,getAllPosts } = postsStore
 
 
