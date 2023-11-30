@@ -17,12 +17,13 @@ import { storeToRefs } from 'pinia';
 
  const postsStore = usePostsStore()
  const { getAllPostsByQuery } = postsStore
- const { disabledAll } = storeToRefs(postsStore)
+ const { disabledAll, page_number } = storeToRefs(postsStore)
  const value = ref('')
 
  const handleSearch = () => {
      getAllPostsByQuery(value.value)
      disabledAll.value = true
+     page_number.value = 1
      value.value = ''
  }
 </script>

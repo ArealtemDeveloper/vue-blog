@@ -26,14 +26,14 @@ const { getPostsByPage } = postsStore
 
 
 const goNextPage = () => {
-    if(page_number.value <= pages_total.value){
+    if(pages_total.value && page_number.value <= pages_total.value){
         page_number.value += 1;
         getPostsByPage(page_size.value, page_size.value * (page_number.value - 1))
     }
     disabledNext.value = true
 }
 const goPreviousPage = () => {
-    if(page_number.value > 1){
+    if( pages_total.value && page_number.value > 1){
         disabledNext.value = false
         page_number.value -= 1;
         getPostsByPage(page_size.value, page_size.value * (page_number.value - 1))
