@@ -9,6 +9,7 @@
                 <SearchField/>
                 <CategoriesList :data="posts"/>
                 <PostsList :data="posts" :isBlogList="isBlogList"/>
+                <PagePagination :data="posts"/>
             </div>
         </div>
     </Layout>
@@ -21,6 +22,7 @@ import PostsList from '@/components/PostsList/PostsList.vue';
 import PageLoader from '@/components/PageLoader/PageLoader.vue';
 import CategoriesList from '@/components/CategoriesList/CategoriesList.vue';
 import SearchField from '@/components/SearchField/SearchField.vue';
+import PagePagination from '@/components/Pagination/PagePagination.vue';
 import { usePostsStore } from '@/store/posts';
 import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
@@ -28,11 +30,11 @@ import { ref } from 'vue';
 
 const isBlogList = ref(true)
 const postsStore = usePostsStore()
-const { getAllPosts, getPostsByPage } = postsStore
-const { isLoading, posts } = storeToRefs(postsStore)
+const { getPostsByPage } = postsStore
+const { isLoading, posts} = storeToRefs(postsStore)
 
 onMounted(() => {
-        getAllPosts()
+        getPostsByPage(3,0)
 })
 
 </script>

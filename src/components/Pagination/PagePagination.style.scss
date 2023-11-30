@@ -1,0 +1,21 @@
+.container {
+    margin-top: 70px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    padding: 5px 10px;
+    width: 35px;
+    height: 35px;
+    background-color: var(--color-background-secondary);
+    border-radius: 50%;
+    color: var(--color-background-primary);
+}
+
+.disabled {
+    display: none;
+}

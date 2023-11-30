@@ -20,20 +20,25 @@ import { storeToRefs } from 'pinia';
 
 const route = useRoute()
 const postsStore = usePostsStore()
-const { selectedCategory } = storeToRefs(postsStore)
+const { selectedCategory, page_number, disabledNext, disabledAll } = storeToRefs(postsStore)
 const active = ref(false)
-const { getAllPostsByCategories,getAllPosts } = postsStore
+const { getAllPostsByCategories, getPostsByPage } = postsStore
 
 
 const onLoadCategories = (name:string) => {
     if(name === 'All') {
         selectedCategory.value = name;
         route.query.cat = '';
-        getAllPosts()
+        disabledAll.value = false
+        getPostsByPage(3, 0)
+        
     }else {
         selectedCategory.value = name;
         route.query.cat = 'name';
         getAllPostsByCategories(name)
+        page_number.value = 1
+        disabledNext.value = false
+        disabledAll.value = true
     }
 }
 </script>
