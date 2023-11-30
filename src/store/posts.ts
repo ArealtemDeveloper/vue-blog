@@ -10,6 +10,11 @@ export const usePostsStore = defineStore('posts', () => {
     const isLoading = ref<boolean>(false)
     const btnVisible = ref<boolean>(false)
     const selectedCategory = ref<string>('All')
+    const page_size = ref<number>(3)
+    const pages_total = ref<number>()
+    const page_number = ref<number>(1)
+    const disabledNext = ref<boolean>(false)
+    const disabledAll = ref<boolean>(false)
 
     const route = useRoute();
 
@@ -56,18 +61,21 @@ export const usePostsStore = defineStore('posts', () => {
         }
     }
 
-    const getPostsByPage = async (page:number, amount:number) => {
+    const getPostsByPage = async ( page_size:number, amount:number) => {
         isLoading.value = true
         try {
             const res = await axios.get('https://blog-backend-rosy.vercel.app/api/posts/page/get', {
                 params: {
-                    limit: page,
+                    limit: page_size,
                     offset: amount
                 }
             })
             selectedCategory.value='All'
             btnVisible.value = false
-            if(res) posts.value = res.data
+            if(res) {
+                pages_total.value = res.data.length / 3
+                posts.value = res.data
+            }
             window.scrollTo({
                 top: 0,
                 behavior: "smooth",
@@ -121,11 +129,16 @@ export const usePostsStore = defineStore('posts', () => {
         post,
         latestPosts,
         selectedCategory,
-        getPostsByPage,
+        page_size,
+        disabledNext,
+        disabledAll,
+        pages_total,
+        page_number,
         btnVisible,
+        getPostsByPage,
+        isLoading,
         getAllPostsByQuery,
         getAllPostsByCategories,
-        isLoading,
         getAllPosts,
         getOnePost
     }
