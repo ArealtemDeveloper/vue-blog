@@ -28,7 +28,7 @@ import { ref } from 'vue';
 
 const isBlogList = ref(true)
 const postsStore = usePostsStore()
-const { getAllPosts } = postsStore
+const { getAllPosts, getPostsByPage } = postsStore
 const { isLoading, posts } = storeToRefs(postsStore)
 
 onMounted(() => {
