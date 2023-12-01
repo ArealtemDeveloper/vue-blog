@@ -90,8 +90,8 @@ const postsStore = usePostsStore()
 const { createPost } = postsStore
 const selected = ref<string>('')
 const errorMsg = ref<string>('')
-const userId  = (JSON.parse(localStorage.getItem('user').id))
-console.log(user, userId)
+const user = localStorage.getItem('user')
+console.log(user)
 const post = reactive({
     title: '',
     desc: '',
@@ -99,7 +99,7 @@ const post = reactive({
     extended: '',
     cat: '',
     date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-    uid: userId,
+    uid: JSON.parse(user).id,
 })
 const onChooseCategory = (category: ICategory) => {
     selected.value = category.name
