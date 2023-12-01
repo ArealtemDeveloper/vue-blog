@@ -93,8 +93,10 @@ const errorMsg = ref<string>('')
 
 
 
-const user = ref(localStorage.getItem('user'))!
-const userId = ref(JSON.parse(user.value).id)!
+const user = ref<string | null>(localStorage.getItem('user'))
+const userId = ref<number>()
+user.value ? userId.value = JSON.parse(user.value).id : null
+
 
 const post = reactive({
     title: '',
