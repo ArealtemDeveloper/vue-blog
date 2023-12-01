@@ -19,18 +19,25 @@
 <script setup lang="ts">
 import { usePostsStore } from '../../store/posts';
 import { storeToRefs } from 'pinia';
+import { onMounted } from 'vue';
 
 const postsStore = usePostsStore()
 const { pages_total, page_size, page_number, disabledNext, disabledAll } = storeToRefs(postsStore)
 const { getPostsByPage } = postsStore
 
+onMounted( () => {
+    page_number.value = 1
+    disabledNext.value = false
+})
+
 
 const goNextPage = () => {
-    if(pages_total.value && page_number.value <= pages_total.value){
+    if(pages_total.value && page_number.value < pages_total.value){
+        console.log(page_number.value)
         page_number.value += 1;
+        page_number.value > pages_total.value ? disabledNext.value = true : disabledNext.value = false
         getPostsByPage(page_size.value, page_size.value * (page_number.value - 1))
     }
-    disabledNext.value = true
 }
 const goPreviousPage = () => {
     if( pages_total.value && page_number.value > 1){
