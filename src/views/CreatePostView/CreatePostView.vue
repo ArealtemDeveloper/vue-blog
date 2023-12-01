@@ -90,8 +90,8 @@ const postsStore = usePostsStore()
 const { createPost } = postsStore
 const selected = ref<string>('')
 const errorMsg = ref<string>('')
-const user = localStorage.getItem('user')
-const userId:number = JSON.parse(user).id
+const user = ref(localStorage.getItem('user'))
+const userId = ref(JSON.parse(user).id)
 const post = reactive({
     title: '',
     desc: '',
