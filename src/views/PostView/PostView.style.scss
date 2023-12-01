@@ -57,6 +57,11 @@
     }
 }
 
+.error_title {
+    color: var(--color-text-primary);
+    font-size: 20px;
+}
+
 .title_tools {
     display: flex;
     gap: 20px;

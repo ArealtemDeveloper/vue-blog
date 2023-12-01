@@ -31,6 +31,13 @@
                 </div>
         </div>
         </div>
+            <div v-else class="container">
+                <div class="main">
+                        <h1 class="error_title">
+                            Post not Found
+                        </h1>
+                </div>
+            </div>
     </Layout>
 </template>
 
