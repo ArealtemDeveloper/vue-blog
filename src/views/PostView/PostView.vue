@@ -20,7 +20,12 @@
                         </div>
                         <span>{{post.username}}</span>
                     </div>
-                    <h1>{{ post.title }}</h1>
+                    <div class="title_tools">
+                        <h1 class="title">{{ post.title }}</h1>
+                        <div v-if="post.username === userUsername">
+                            <EditTools/>
+                        </div>
+                    </div>
                     <p>{{ post.desc }}</p>
                     <p class="extended">{{ post.extended }}</p>
                 </div>
@@ -34,18 +39,23 @@
 
 <script setup lang="ts">
 import BreadCrumb from '@/components/BreadCrumb/BreadCrumb.vue'
+import EditTools from '@/components/EditTools/EditTools.vue'
 import PageLoader from '@/components/PageLoader/PageLoader.vue';
 import Layout from '@/layouts/Layout/PageLayout.vue';
 import moment from 'moment';
 import { onMounted,  } from 'vue';
 import { usePostsStore } from '@/store/posts';
 import { storeToRefs } from 'pinia';
+import { ref } from 'vue';
 
 
 const postsStore = usePostsStore()
 const { getOnePost } = postsStore
 const { post, isLoading } = storeToRefs(postsStore)
-console.log(post)
+const user = ref(localStorage.getItem('user'))
+const userUsername = ref<string>('');
+user.value ? userUsername.value = JSON.parse(user.value).username : null
+
 onMounted(() => {
     getOnePost()
 })
