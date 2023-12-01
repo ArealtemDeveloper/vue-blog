@@ -1,0 +1,18 @@
+.tools_container {
+    display: flex;   
+    gap: 20px;
+}
+
+.tool_container {
+    cursor: pointer;
+    display: flex;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    padding: 1px 10px;
+    color: #fff;
+    border-radius: 10px;
+    gap: 10px;
+
+}

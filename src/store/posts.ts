@@ -168,6 +168,16 @@ export const usePostsStore = defineStore('posts', () => {
         }
     }
 
+    const deletePost = async () => {
+        try {
+            const res = await axios.delete(`https://blog-backend-rosy.vercel.app/api/posts/${+route.params.id}`)
+            msg.value = res.data
+            if(res) router.push('/')
+        } catch (error) {
+            msg.value = 'Error | Post has not been deleted'
+        }
+    }
+
     return {
         posts,
         postsPagination,
@@ -185,6 +195,7 @@ export const usePostsStore = defineStore('posts', () => {
         getPostsByPage,
         isLoading,
         getAllPostsByQuery,
+        deletePost,
         getAllPostsByCategories,
         getAllPosts,
         getOnePost,
