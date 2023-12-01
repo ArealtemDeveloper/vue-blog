@@ -33,7 +33,6 @@ onMounted( () => {
 
 const goNextPage = () => {
     if(pages_total.value && page_number.value < pages_total.value){
-        console.log(page_number.value)
         page_number.value += 1;
         page_number.value > pages_total.value ? disabledNext.value = true : disabledNext.value = false
         getPostsByPage(page_size.value, page_size.value * (page_number.value - 1))
