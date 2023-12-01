@@ -11,7 +11,7 @@ interface IPost {
     extended: string,
     cat: string,
     date: string,
-    uid: number,
+    uid: number | undefined,
 }
 
 export const usePostsStore = defineStore('posts', () => {
