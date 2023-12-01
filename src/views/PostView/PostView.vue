@@ -31,9 +31,6 @@
                 </div>
         </div>
         </div>
-        <div v-else>
-            ПОСТ НЕ НАЙДЕН
-        </div>
     </Layout>
 </template>
 
