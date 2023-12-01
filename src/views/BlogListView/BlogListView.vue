@@ -8,7 +8,7 @@
             <div class="content">
                 <SearchField/>
                 <CategoriesList :data="posts"/>
-                <PostsList :data="posts" :isBlogList="isBlogList"/>
+                <PostsList :data="postsPagination" :isBlogList="isBlogList"/>
                 <PagePagination :data="posts"/>
             </div>
         </div>
@@ -30,10 +30,11 @@ import { ref } from 'vue';
 
 const isBlogList = ref(true)
 const postsStore = usePostsStore()
-const { getPostsByPage } = postsStore
-const { isLoading, posts} = storeToRefs(postsStore)
+const { getPostsByPage, getAllPosts } = postsStore
+const { isLoading, posts, postsPagination} = storeToRefs(postsStore)
 
-onMounted(() => {
+onMounted(async() => {
+        await getAllPosts();
         getPostsByPage(3,0)
 })
 

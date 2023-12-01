@@ -11,12 +11,14 @@ interface IPost {
     extended: string,
     cat: string,
     date: string,
-    uid: number,
+    uid: number | undefined,
 }
 
 export const usePostsStore = defineStore('posts', () => {
     const posts = ref([]);
+    const postsPagination = ref([]);
     const post = ref()
+    const msg = ref<string>('')
     const latestPosts = ref([]);
     const postsPreview = ref([]);
     const isLoading = ref<boolean>(false)
@@ -66,8 +68,11 @@ export const usePostsStore = defineStore('posts', () => {
             selectedCategory.value='All'
             btnVisible.value = true
             disabledAll.value = true
+            
             page_number.value = 1
-            if(res) posts.value = res.data
+            if(res) {
+                postsPagination.value = res.data
+            }
             window.scrollTo({
                 top: 0,
                 behavior: "smooth",
@@ -92,8 +97,8 @@ export const usePostsStore = defineStore('posts', () => {
             selectedCategory.value='All'
             btnVisible.value = false
             if(res) {
-                pages_total.value = res.data.length / 3
-                posts.value = res.data
+                pages_total.value = posts.value.length / 3
+                postsPagination.value = res.data
             }
             window.scrollTo({
                 top: 0,
@@ -116,7 +121,9 @@ export const usePostsStore = defineStore('posts', () => {
             page_number.value = 1
             disabledNext.value = false
             disabledAll.value = true
-            if(res) posts.value = res.data
+            if(res) [
+                postsPagination.value = res.data
+            ]
             window.scrollTo({
                 top: 0,
                 behavior: "smooth",
@@ -148,21 +155,14 @@ export const usePostsStore = defineStore('posts', () => {
     const createPost = async (post:IPost) => {
         isLoading.value = true
         try {
-            const res = await axios.post(`https://blog-backend-rosy.vercel.app/api/posts`, {
-                "title": post.title,
-                "desc": post.desc,
-                "img": post.img,
-                "extended": post.extended,
-                "cat": post.cat,
-                "date": post.date,
-                "uid": post.uid,
-            })
+            const res = await axios.post(`https://blog-backend-rosy.vercel.app/api/posts`, post)
             if(res) {
-                console.log(post)
+                msg.value = res.data
                 router.push('/')
             }  
         } catch (error) {
             console.log(error)
+            msg.value = 'Error | Post has not been created'
         } finally {
             isLoading.value = false
         }
@@ -170,8 +170,10 @@ export const usePostsStore = defineStore('posts', () => {
 
     return {
         posts,
+        postsPagination,
         post,
         latestPosts,
+        msg,
         postsPreview,
         selectedCategory,
         page_size,

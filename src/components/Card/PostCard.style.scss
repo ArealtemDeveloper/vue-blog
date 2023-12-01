@@ -4,6 +4,7 @@
     align-items: flex-start;
     gap: 12px;
     width: 400px;
+    height: 500px;
 }
 
 .card.list {
@@ -74,12 +75,6 @@
         color: var(--color-background-primary);
         padding: 5px 10px;
         border-radius: 10px;
-    }
-}
-
-@media(min-width: 865px) and (max-width:1300px) {
-    .card  {
-        height: 500px;
     }
 }
 
