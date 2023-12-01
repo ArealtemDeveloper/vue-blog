@@ -13,11 +13,9 @@
 <script setup lang="ts">
 import { usePostsStore } from '@/store/posts';
 import { ref } from 'vue';
-import { storeToRefs } from 'pinia';
 
  const postsStore = usePostsStore()
  const { getAllPostsByQuery } = postsStore
- const { disabledAll, page_number } = storeToRefs(postsStore)
  const value = ref('')
 
  const handleSearch = () => {
