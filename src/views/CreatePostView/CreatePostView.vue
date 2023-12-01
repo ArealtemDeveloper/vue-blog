@@ -90,8 +90,12 @@ const postsStore = usePostsStore()
 const { createPost } = postsStore
 const selected = ref<string>('')
 const errorMsg = ref<string>('')
+
+
+
 const user = ref(localStorage.getItem('user'))!
-const userId = ref(JSON.parse(user.value).id)
+const userId = ref(JSON.parse(user.value).id)!
+
 const post = reactive({
     title: '',
     desc: '',
@@ -110,7 +114,6 @@ const onSumbitForm = () => {
         errorMsg.value = 'Please choose a category'
         return
     }
-    console.log(post)
     createPost(post)
     errorMsg.value = ''
 }
