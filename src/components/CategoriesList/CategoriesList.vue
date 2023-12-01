@@ -20,7 +20,7 @@ import { storeToRefs } from 'pinia';
 
 const route = useRoute()
 const postsStore = usePostsStore()
-const { selectedCategory, page_number, disabledNext, disabledAll } = storeToRefs(postsStore)
+const { selectedCategory, disabledAll } = storeToRefs(postsStore)
 const active = ref(false)
 const { getAllPostsByCategories, getPostsByPage } = postsStore
 
