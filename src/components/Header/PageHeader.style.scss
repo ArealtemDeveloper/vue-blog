@@ -23,8 +23,8 @@
   }
 
   .popUp {
-    position: absolute;
-    z-index: 2;
+    position: fixed;
+    z-index: 3;
     top: 100px;
     left: 0px;
   }

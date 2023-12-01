@@ -2,44 +2,76 @@
     <BreadCrumb/>
     <Layout>
         <div class="container">
-            <div class="content">
+            <form class="content" @submit.prevent="onSumbitForm">
             <h1>Create your own Post</h1>
             <div class="inputs_container">
                 <div class="input_container">
                     <label class="label" for="title">Title</label>
-                    <input class="input-text" id="title" name="title" type="text" placeholder="Title">
+                    <input 
+                    minlength="10" 
+                    required 
+                    class="input-text" 
+                    id="title" 
+                    name="title" 
+                    type="text" 
+                    placeholder="Title"
+                    v-model="post.title"
+                    >
                 </div>
                 <div class="input_container">
                     <label class="label" for="desc">Desc</label>
-                    <input class="input-text" id="desc" type="text" placeholder="Short Description">
+                    <input 
+                    minlength="10" 
+                    required 
+                    class="input-text" 
+                    id="desc" 
+                    type="text" 
+                    placeholder="Short Description"
+                    v-model="post.desc"
+                    >
+                </div>
+                <div class="input_container">
+                    <label class="label" for="img">Img</label>
+                    <input 
+                    required 
+                    class="input-text" 
+                    id="img" 
+                    type="text" 
+                    placeholder="Enter img URL"
+                    v-model="post.img"
+                    >
                 </div>
             </div>
-                <div class="buttons" v-if="editor">
-                <button @click="editor.chain().focus().toggleItalic().run()" :disabled="!editor.can().chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('bold') }">
-                    <img src="../../assets/images/italic.svg" alt="img">
-                </button>
-                <button @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
-                    <img src="../../assets/images/bold.svg" alt="img">
-                </button>
-                <button @click="editor.chain().focus().unsetAllMarks().run()">
-                    <img src="../../assets/images/return.svg" alt="img">
-                </button>
-                <button @click="editor.chain().focus().toggleHeading({ level: 1 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }">
-                    <img src="../../assets/images/h1.svg" alt="img">
-                </button>
-                <button @click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }">
-                    <img src="../../assets/images/h2.svg" alt="img">
-                </button>
-                <button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }">
-                    <img src="../../assets/images/h3.svg" alt="img">
-                </button>
-                </div>
                 <div class="editor_container">
-                <span class="label">Main Text</span>
-                    <editor-content :editor="editor" class="editor" v-model="content" />
+                <label class="label" for="content">Content</label>
+                    <textarea 
+                    class="editor" 
+                    id="content" 
+                    placeholder="Your post text" 
+                    v-model="post.extended"
+                    cols="30" 
+                    rows="10">
+                    </textarea>
+                </div>
+                <div class="chooseCategory">
+                <span class="chooseCategory_title">Choose one category</span>
+                <div class="categories_container">
+                    <div 
+                    class="category" 
+                    v-for="category in availableCategories" 
+                    :key="category.id" 
+                    @click="onChooseCategory(category)"
+                    :class="{ selected: selected === category.name}"
+                    >
+                        {{ category.name }}
+                    </div>
+                </div>
+                </div>
+                <div class="errorMsg" v-if="errorMsg">
+                    {{  errorMsg }}
                 </div>
                 <button class="btn" >Create Post</button>
-            </div>
+            </form>
         </div>
     </Layout>
 </template>
@@ -47,22 +79,39 @@
 <script setup lang="ts">
 import Layout from '@/layouts/Layout/PageLayout.vue'
 import BreadCrumb from '@/components/BreadCrumb/BreadCrumb.vue'
-import { EditorContent, useEditor } from '@tiptap/vue-3'
-import Heading from '@tiptap/extension-heading'
-import StarterKit from '@tiptap/starter-kit'
+import { availableCategories } from './data'
 import { ref } from 'vue';
+import { ICategory } from './CreatePostView.types'
+import { reactive } from 'vue'
+import { usePostsStore } from '@/store/posts';
+import moment from 'moment';
 
-const content = ref<string>('')
-console.log(content.value)
-const editor = useEditor({
-  content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
-  extensions: [
-    StarterKit,
-    Heading.configure({
-        levels: [1, 2, 3]
-    })
-  ],
+const postsStore = usePostsStore()
+const { createPost } = postsStore
+const selected = ref<string>('')
+const errorMsg = ref<string>('')
+const post = reactive({
+    title: '',
+    desc: '',
+    img: '',
+    extended: '',
+    cat: '',
+    date: moment(Date.now()).format('YYYY-MM-DD'),
+    uid: 1
 })
+const onChooseCategory = (category: ICategory) => {
+    selected.value = category.name
+    post.cat = category.name
+}
+const onSumbitForm = () => {
+    if(selected.value === '') {
+        errorMsg.value = 'Please choose a category'
+        return
+    }
+    console.log(post)
+    createPost(post)
+    errorMsg.value = ''
+}
 
 </script>
 

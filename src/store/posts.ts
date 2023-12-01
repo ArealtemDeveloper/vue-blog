@@ -1,12 +1,24 @@
+import { router } from "@/router";
 import axios from "axios";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 
+interface IPost {
+    title: string;
+    desc: string,
+    img: string,
+    extended: string,
+    cat: string,
+    date: string,
+    uid: number,
+}
+
 export const usePostsStore = defineStore('posts', () => {
     const posts = ref([]);
     const post = ref()
     const latestPosts = ref([]);
+    const postsPreview = ref([]);
     const isLoading = ref<boolean>(false)
     const btnVisible = ref<boolean>(false)
     const selectedCategory = ref<string>('All')
@@ -29,6 +41,7 @@ export const usePostsStore = defineStore('posts', () => {
             if(res) {
                 posts.value = res.data
                 latestPosts.value = res.data.slice(-3)
+                postsPreview.value = res.data.slice(-6)
             }
             window.scrollTo({
                 top: 0,
@@ -121,7 +134,6 @@ export const usePostsStore = defineStore('posts', () => {
         try {
             const res = await axios.get(`https://blog-backend-rosy.vercel.app/api/posts/${+route.params.id}`)
             if(res) post.value = res.data
-            console.log(res.data)
             window.scrollTo({
                 top: 0,
                 behavior: "smooth",
@@ -133,10 +145,34 @@ export const usePostsStore = defineStore('posts', () => {
         }
     }
 
+    const createPost = async (post:IPost) => {
+        isLoading.value = true
+        try {
+            const res = await axios.post(`https://blog-backend-rosy.vercel.app/api/posts`, {
+                "title": post.title,
+                "desc": post.desc,
+                "img": post.img,
+                "extended": post.extended,
+                "cat": post.cat,
+                "date": post.date,
+                "uid": post.uid,
+            })
+            if(res) {
+                console.log(post)
+                router.push('/')
+            }  
+        } catch (error) {
+            console.log(error)
+        } finally {
+            isLoading.value = false
+        }
+    }
+
     return {
         posts,
         post,
         latestPosts,
+        postsPreview,
         selectedCategory,
         page_size,
         disabledNext,
@@ -149,6 +185,7 @@ export const usePostsStore = defineStore('posts', () => {
         getAllPostsByQuery,
         getAllPostsByCategories,
         getAllPosts,
-        getOnePost
+        getOnePost,
+        createPost
     }
 })
