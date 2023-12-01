@@ -29,12 +29,13 @@
 
     const postsStore = usePostsStore()
     const { getPostsByPage } = postsStore
-    const { btnVisible, page_number, disabledAll } = storeToRefs(postsStore)
+    const { btnVisible, page_number, disabledAll,disabledNext } = storeToRefs(postsStore)
 
     const backToAllPosts = () => {
         getPostsByPage(3,0)
         page_number.value = 1
         disabledAll.value = false
+        disabledNext.value = false
     }
 
 </script>

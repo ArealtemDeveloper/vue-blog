@@ -36,9 +36,6 @@ const onLoadCategories = (name:string) => {
         selectedCategory.value = name;
         route.query.cat = 'name';
         getAllPostsByCategories(name)
-        page_number.value = 1
-        disabledNext.value = false
-        disabledAll.value = true
     }
 }
 </script>
