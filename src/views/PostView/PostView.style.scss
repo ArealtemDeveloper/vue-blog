@@ -3,6 +3,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 40px;
 }
 .main {
@@ -58,8 +59,17 @@
 }
 
 .error_title {
-    color: var(--color-text-primary);
-    font-size: 20px;
+    width: 300px;
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .text {
+        color: var(--color-text-primary);
+        text-align: center;
+        font-size: 40px;
+    }
 }
 
 .title_tools {
@@ -79,6 +89,14 @@
     }
     .title_tools {
         flex-direction: column-reverse;
+    }
+    .error_title {
+        .text {
+            font-size: 28px;
+        }
+        img {
+            width: 250px;
+        }
     }
 }
 
