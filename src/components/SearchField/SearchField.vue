@@ -22,8 +22,6 @@ import { storeToRefs } from 'pinia';
 
  const handleSearch = () => {
      getAllPostsByQuery(value.value)
-     disabledAll.value = true
-     page_number.value = 1
      value.value = ''
  }
 </script>

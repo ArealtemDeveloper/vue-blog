@@ -45,9 +45,15 @@ export const usePostsStore = defineStore('posts', () => {
     const getAllPostsByQuery = async (text:string) => {
         isLoading.value = true
         try {
-            const res = await axios.post('https://blog-backend-rosy.vercel.app/api/posts/search/get', {"text": text})
+            const res = await axios.get('https://blog-backend-rosy.vercel.app/api/posts/search/get', {
+                params: {
+                    text: text,
+                }
+            })
             selectedCategory.value='All'
             btnVisible.value = true
+            disabledAll.value = true
+            page_number.value = 1
             if(res) posts.value = res.data
             window.scrollTo({
                 top: 0,
@@ -94,6 +100,9 @@ export const usePostsStore = defineStore('posts', () => {
             const res = await axios.get(`https://blog-backend-rosy.vercel.app/api/posts/?cat=${category}`)
             selectedCategory.value=category
             btnVisible.value = false
+            page_number.value = 1
+            disabledNext.value = false
+            disabledAll.value = true
             if(res) posts.value = res.data
             window.scrollTo({
                 top: 0,
