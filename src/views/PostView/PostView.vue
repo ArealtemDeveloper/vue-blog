@@ -34,7 +34,8 @@
             <div v-else class="container">
                 <div class="main">
                         <h1 class="error_title">
-                            Post not Found
+                            <img src="../../assets/images/404.png" alt="404">
+                            <h1 class="text">Post not found</h1>
                         </h1>
                 </div>
             </div>
